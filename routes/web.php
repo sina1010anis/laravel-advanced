@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RequestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/Request' , [RequestController::class , 'index']);
+Route::get('/Requests/{id?}' , [RequestController::class , 'index'])->where(['id' => '[0-9]+']);
+Route::post('/request_check' , [RequestController::class , 'request_check'])->name('request_check');
